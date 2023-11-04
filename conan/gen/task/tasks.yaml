@@ -1,0 +1,43 @@
+defeat_task:
+  - cow
+  - skeleton
+  - zombie
+  # - spider
+  # - creeper
+
+make_task:
+  - iron_pickaxe
+  - iron_sword
+  - stone_pickaxe
+  - stone_sword
+  - wood_pickaxe
+  - wood_sword
+  - steak
+  - bucket
+  - bed
+
+place_task:
+  - furnace
+  - table
+  - bed
+
+get_task:
+  - stone
+  - water
+  - wood
+  - diamond
+  - iron
+  - beef
+  - coal
+  - lava
+  - apple
+  - drink
+
+weapon:
+  - iron_pickaxe
+  - iron_sword
+  - stone_pickaxe
+  - stone_sword
+  - wood_pickaxe
+  - wood_sword
+

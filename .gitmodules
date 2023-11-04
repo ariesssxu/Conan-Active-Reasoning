@@ -1,0 +1,6 @@
+[submodule "training/training/dreamer/pydreamer"]
+	path = training/training/dreamer/pydreamer
+	url = git@github.com:jurgisp/pydreamer.git
+[submodule "training/pydreamer"]
+	path = training/pydreamer
+	url = git@github.com:jurgisp/pydreamer.git

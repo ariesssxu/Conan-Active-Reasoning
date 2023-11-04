@@ -1,0 +1,25 @@
+survival_types:
+- no_food
+- no_drink
+- no_sleep
+- all
+# - make_weapon
+
+no_food:
+- get_apple
+- get_beef
+- make_steak
+
+no_drink:
+- get_water
+- get_drink
+
+no_sleep:
+- sleep
+- place_bed
+
+make_weapon:
+- iron_sword
+- stone_sword
+- wood_sword
+

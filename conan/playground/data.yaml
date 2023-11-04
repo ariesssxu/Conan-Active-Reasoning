@@ -1,0 +1,237 @@
+actions:
+  - noop
+  - move_left
+  - move_right
+  - move_up
+  - move_down
+  - do
+  - sleep
+  - place_stone
+  - place_table
+  - place_furnace
+  - place_plant
+  - place_bed
+  - make_wood_pickaxe
+  - make_stone_pickaxe
+  - make_iron_pickaxe
+  - make_wood_sword
+  - make_stone_sword
+  - make_iron_sword
+  - make_steak
+  - make_bucket
+  - make_bed
+  - eat_apple
+  - eat_beef
+  - eat_steak
+  - drink
+
+materials:
+  - water
+  - grass
+  - stone
+  - path
+  - sand
+  - tree
+  - lava
+  - apple_tree
+  - coal
+  - iron
+  - diamond
+  - table
+  - furnace
+  - bed
+  - sand_left
+  - sand_right
+  - sand_up
+  - sand_down
+  - grass_left
+  - grass_right
+  - grass_up
+  - grass_down
+  - tree_cut
+  - stone_left
+  - coal_left
+  - iron_left
+  - diamond_left
+  - cow_dead
+  - zombie_dead
+  - skeleton_dead
+  - grass_water
+  - grass_unknown
+  - sand_water
+  - sand_unknown
+  - furnace_destroyed
+  - table_destroyed
+  - bed_destroyed
+  - path_blood
+  - grass_blood
+  - sand_blood
+  - fence
+
+walkable:
+  - grass
+  - grass_left
+  - grass_right
+  - grass_up
+  - grass_down
+  - path
+  - sand
+  - sand_left
+  - sand_right
+  - sand_up
+  - sand_down
+  - tree_cut
+  - stone_left
+  - coal_left
+  - iron_left
+  - diamond_left
+  - cow_dead
+  - skeleton_dead
+  - zombie_dead
+  - grass_water
+  - grass_unknown
+  - sand_water
+  - sand_unknown
+  - furnace_destroyed
+  - table_destroyed
+  - bed
+  - bed_destroyed
+  - path_blood
+  - grass_blood
+  - sand_blood
+  
+objects:
+  - player
+  - cow
+  - zombie
+  - skeleton
+  - arrow
+  - plant
+  - player_bak
+
+traces_1:
+  - grass_left
+  - grass_right
+  - grass_up
+  - grass_down
+  - sand_left
+  - sand_right
+  - sand_up
+  - sand_down
+  - grass_unknown
+  - sand_unknown
+
+traces_2:
+  - stone_left
+  - coal_left
+  - iron_left
+  - cow_dead
+  - skeleton_dead
+  - zombie_dead
+  - table
+  - furnace
+  - sand_water
+  - tree_cut
+  - furnace_destroyed
+  - table_destroyed
+  - bed
+  - bed_destroyed
+  - path_blood
+  - grass_blood
+  - sand_blood
+  - fence
+
+
+items:
+  health: {max: 9, initial: 9}
+  food: {max: 9, initial: 9}
+  drink: {max: 9, initial: 9}
+  energy: {max: 9, initial: 9}
+  sapling: {max: 9, initial: 0}
+  wood: {max: 9, initial: 0}
+  stone: {max: 9, initial: 0}
+  coal: {max: 9, initial: 0}
+  iron: {max: 9, initial: 0}
+  diamond: {max: 9, initial: 0}
+  wood_pickaxe: {max: 9, initial: 0}
+  stone_pickaxe: {max: 9, initial: 0}
+  iron_pickaxe: {max: 9, initial: 0}
+  wood_sword: {max: 9, initial: 0}
+  stone_sword: {max: 9, initial: 0}
+  iron_sword: {max: 9, initial: 0}
+  beef: {max: 9, initial: 0, health: 4}
+  steak: {max: 9, initial: 0, health: 6}
+  bed: {max: 9, initial: 0}
+  bucket: {max: 9, initial: 0}
+  water_bucket: {max: 9, initial: 0}
+  lava_bucket: {max: 9, initial: 0}
+  apple: {max: 9, initial: 0, health: 2}
+
+collect:
+  tree: {require: {}, receive: {wood: 1}, leaves: tree_cut}
+  stone: {require: {wood_pickaxe: 1}, receive: {stone: 1}, leaves: stone_left}
+  coal: {require: {wood_pickaxe: 1}, receive: {coal: 1}, leaves: coal_left}
+  iron: {require: {stone_pickaxe: 1}, receive: {iron: 1}, leaves: iron_left}
+  diamond: {require: {iron_pickaxe: 1}, receive: {diamond: 1}, leaves: diamond_left}
+  drink: {require: {}, receive: {drink: 1}, leaves: water}
+  grass: {require: {}, receive: {sapling: 1}, probability: {sapling: 0.1}, leaves: grass}
+  cow: {require: {}, receive: {beef: 1}, leaves: cow_dead}
+  lava: {require: {bucket: 1}, receive: {lava_bucket: 1}, leaves: lava}
+  water: {require: {bucket: 1}, receive: {water_bucket: 1, drink: 1}, leaves: water}
+  apple_tree: {require: {}, receive: {apple: 1, wood: 1}, leaves: tree_cut}
+
+place:
+  stone: {uses: {stone: 1}, where: [grass, sand, path, water, lava, grass_left, grass_right, grass_up, grass_down, sand_left, sand_right, sand_up, sand_down], type: material}
+  table: {uses: {wood: 2}, where: [grass, sand, path, grass_left, grass_right, grass_up, grass_down, sand_left, sand_right, sand_up, sand_down], type: material}
+  bed: {uses: {bed: 1}, where: [grass, sand, path, grass_left, grass_right, grass_up, grass_down, sand_left, sand_right, sand_up, sand_down], type: material}
+  furnace: {uses: {stone: 4}, where: [grass, sand, path, grass_left, grass_right, grass_up, grass_down, sand_left, sand_right, sand_up, sand_down], type: material}
+  plant: {uses: {sapling: 1}, where: [grass, grass_left, grass_right, grass_up, grass_down], type: object}
+  fence: {uses: {wood: 1}, where: [grass, sand, path, grass_left, grass_right, grass_up, grass_down, sand_left, sand_right, sand_up, sand_down], type: material}
+
+make:
+  wood_pickaxe: {uses: {wood: 1}, nearby: [table], gives: 1}
+  stone_pickaxe: {uses: {wood: 1, stone: 1}, nearby: [table], gives: 1}
+  iron_pickaxe: {uses: {wood: 1, coal: 1, iron: 1}, nearby: [furnace], gives: 1}
+  # iron_pickaxe: {uses: {wood: 1, coal: 1, iron: 1}, nearby: [table, furnace], gives: 1}
+  wood_sword: {uses: {wood: 1}, nearby: [table], gives: 1}
+  bed: {uses: {wood: 2, stone: 1}, nearby: [table], gives: 1}
+  stone_sword: {uses: {wood: 1, stone: 1}, nearby: [table], gives: 1}
+  iron_sword: {uses: {wood: 1, coal: 1, iron: 1}, nearby: [furnace], gives: 1}
+  steak: {uses: {beef: 1}, nearby: [furnace], gives: 1}
+  bucket: {uses: {iron: 2}, nearby: [furnace], gives: 1}
+  water_bucket: {uses: {bucket: 1}, nearby: [water], gives: 1}
+  lava_bucket: {uses: {bucket: 1}, nearby: [lava], gives: 1}
+
+achievements:
+  - collect_coal
+  - collect_diamond
+  - collect_drink
+  - collect_water
+  - collect_iron
+  - collect_sapling
+  - collect_stone
+  - collect_wood
+  - collect_beef
+  - collect_apple
+  - collect_water_bucket
+  - collect_lava_bucket
+  - defeat_skeleton
+  - defeat_zombie
+  - eat_beef
+  - eat_steak
+  - eat_apple
+  - make_iron_pickaxe
+  - make_iron_sword
+  - make_stone_pickaxe
+  - make_stone_sword
+  - make_wood_pickaxe
+  - make_wood_sword
+  - make_steak
+  - make_bed
+  - make_bucket
+  - place_furnace
+  - place_plant
+  - place_stone
+  - place_table
+  - wake_up
+  - place_bed
